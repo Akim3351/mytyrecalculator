@@ -86,3 +86,9 @@
     font-weight: 400;
     color: rgb(255, 255, 255);
 }
+
+.tyres__table th:hover,
+.tyres__table td:hover {
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+}
