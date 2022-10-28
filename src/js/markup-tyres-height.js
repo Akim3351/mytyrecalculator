@@ -1,4 +1,4 @@
-import tyresHeight from '../data/tyres-height';
+import tyresHeight from '../data/data-tyres-height';
 
 const leftTyresHeight = document.getElementById("lefttyresheight");
 const rightTyresHeight = document.getElementById("righttyresheight");

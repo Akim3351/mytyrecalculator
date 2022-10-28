@@ -1,12 +1,18 @@
-import tyresDiameter from '../data/tyres-diameter';
+import tyresDiameter from '../data/data-tyres-diameter';
 
 const leftTyresDiameter = document.getElementById("lefttyresdiameter");
 const rightTyresDiameter = document.getElementById("righttyresdiameter");
+const leftDisksDiameter = document.getElementById("leftdisksdiameter");
+const rightDisksDiameter = document.getElementById("rightdisksdiameter");
+
 
 const tyresDiameterMarkup = makeTyresDiameterMarkup(tyresDiameter);
 
 leftTyresDiameter.innerHTML = tyresDiameterMarkup;
 rightTyresDiameter.innerHTML = tyresDiameterMarkup;
+leftDisksDiameter.innerHTML = tyresDiameterMarkup;
+rightDisksDiameter.innerHTML = tyresDiameterMarkup;
+
 
 function makeTyresDiameterMarkup(tyresDiameter) {
     const markupString = tyresDiameter.map(

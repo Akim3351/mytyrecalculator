@@ -11,8 +11,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
-
 }
 
 .tyres__form {
@@ -45,30 +43,94 @@
     text-align: center;
 }
 
+.form__checkbox{
+    width: 50%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form__checkbox:hover{
+    cursor: pointer;
+}
+
+.form__checkbox input{
+    margin: 0px 5px 0px 0px;
+    outline: none;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.form__checkbox input:hover{
+    cursor: pointer;
+}
+
+.form__checkbox p{
+    margin: 0px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
 .select__wrapper{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.tyres__form p{
+    margin: 0px;
+    padding: 5px 0px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.form__label{
+    display: block;
+    width: 33%;
+
+    &:hover > .tyres__label{
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        cursor: pointer;
+        }
+}
+
+.without__disks  .disks__label{
+    color: rgb(169, 169, 169);
+}
+
+.with__disks .disks__label{
+    color: rgb(0, 0, 0);
+}
+
+.with__disks .form__label:hover .disks__label{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
 
 .tyres__form select{
     box-sizing: border-box;
     outline: none;
-    height: 35px;
-    width: 33%;
-    border-radius: 25px;
+    height: 25px;
+    width: 100%;
+    border-radius: 15px;
     border-bottom: 2px solid rgb(128, 128, 128);
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.tyres__form select:hover, 
-.tyres__form select:active{
+.tyres__form select:hover:enabled, 
+.tyres__form select:active:enabled{
     cursor: pointer;
     background-color: rgb(255, 255, 255);
     color:rgb(0, 0, 0);
+}
+
+.form__sizeholder{
+    height: 20px;
 }
 
 .tyres__table{
@@ -80,12 +142,13 @@
     padding: 3px;
     height: 50px;
     width: 25%;
+    font-size: 12px;
     text-align: center;
 }
 
 .tyres__table th{
     background-color: rgba(128, 128, 128, 0.5);
-    font-weight: 800;
+    font-weight: 600;
     color: rgb(0, 0, 0);
 }
 

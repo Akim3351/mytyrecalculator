@@ -45,7 +45,15 @@ const tyresHeight = [
     },
     {
         id:12,
+        height: 80
+    },
+    {
+        id:13,
         height: 85
+    },
+    {
+        id:14,
+        height: 90
     }
 ];
 

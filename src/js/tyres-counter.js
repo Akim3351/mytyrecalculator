@@ -5,7 +5,10 @@ tyresForm.addEventListener('change', onFormChange);
 
 function onFormChange(event) {
     event.preventDefault;
-    console.log("ka-chink!!");
+    // console.log("ka-chink!!");
+    // console.log(event.target);
+
+    
     // input selectors
     const leftTyresWidth = document.getElementById("lefttyreswidth").value;
     const rightTyresWidth = document.getElementById("righttyreswidth").value;
@@ -13,6 +16,19 @@ function onFormChange(event) {
     const rightTyresHeight = document.getElementById("righttyresheight").value;
     const leftTyresDiameter = document.getElementById("lefttyresdiameter").value;
     const rightTyresDiameter = document.getElementById("righttyresdiameter").value;
+    const leftDisksDiameter = document.getElementById("leftdisksdiameter").value;
+    const rightDisksDiameter = document.getElementById("rightdisksdiameter").value;
+    const leftTyresDiameterSelect = document.getElementById("lefttyresdiameter");
+    const rightTyresDiameterSelect = document.getElementById("righttyresdiameter");
+    const leftDisksDiameterSelect = document.getElementById("leftdisksdiameter");
+    const rightDisksDiameterSelect = document.getElementById("rightdisksdiameter");
+    const leftDisksWidth = document.getElementById("leftdiskswidth").value;
+    const rightDisksWidth = document.getElementById("rightdiskswidth").value;
+    const leftDisksET = document.getElementById("leftdiskset").value;
+    const rightDisksET = document.getElementById("rightdiskset").value;
+
+    const disksSwicthCheckBox = document.getElementById("disksswitch");
+
 
     // table cells selectors
 
@@ -23,10 +39,29 @@ function onFormChange(event) {
     const leftTyresDiameterCell = document.getElementById("oldtyresdiameter");
     const rightTyresDiameterCell = document.getElementById("newdtyresiameter");
 
+    const oldDisksWidthCell = document.getElementById("olddiskswidth");
+    const newDisksWidthCell = document.getElementById("newddiskswidth");
+    const oldWheelsETCell = document.getElementById("oldwheelset");
+    const newWheelsETCell = document.getElementById("newdwheelset");
+
     // difference selectors
     const tyresWidthDifferenceCell = document.getElementById("tyreswidthdifference");
     const tyresHeightDifferenceCell = document.getElementById("tyresheightdifference");
     const tyresDiameterDifferenceCell = document.getElementById("tyresdiameterdifference");
+
+    const disksDifferenceCell = document.getElementById("disksdifference");
+
+    if (event.target === disksSwicthCheckBox) {
+        return;
+    } else if (event.target === leftTyresDiameterSelect) {
+        leftDisksDiameterSelect.value = leftTyresDiameter;
+    } else if (event.target === rightTyresDiameterSelect) {
+        rightDisksDiameterSelect.value = rightTyresDiameter;
+    } else if (event.target === leftDisksDiameterSelect) {
+        leftTyresDiameterSelect.value = leftDisksDiameter
+    } else if (event.target === rightDisksDiameterSelect) {
+        rightTyresDiameterSelect.value = rightDisksDiameter
+    };
 
     oldTyresWidthCell.innerText = leftTyresWidth;
     newTYresWidthCell.innerText = rightTyresWidth;
@@ -70,4 +105,35 @@ function onFormChange(event) {
     } else if (newWheelHeight === oldWheelHeight) {
         tyresDiameterDifferenceCell.innerText = 'Wheel height is the same. The clearance of the car will not change';
     }
-}
+
+    if (disksSwicthCheckBox.checked === true) {
+        oldDisksWidthCell.innerText = Number(leftDisksWidth * 2.5);
+        newDisksWidthCell.innerText = Number(rightDisksWidth * 2.5);
+        oldWheelsETCell.innerText = leftDisksET;
+        newWheelsETCell.innerText = rightDisksET;
+
+        const oldWheelToBodyGap = Number(((leftDisksWidth * 2.5) / 2) - (Number(leftDisksET) / 10));
+        
+        const newWheelToBodyGap = Number(((rightDisksWidth * 2.5) / 2) - (Number(rightDisksET) / 10));
+
+        if (oldWheelToBodyGap > newWheelToBodyGap) {
+            const diff = Number(oldWheelToBodyGap - newWheelToBodyGap).toFixed(2);
+            const phraze = `The wheel is closer to the suspension and body elements by ${diff} cm`;
+            disksDifferenceCell.innerText = phraze;
+        } else if (oldWheelToBodyGap < newWheelToBodyGap) {
+            const diff = Number(newWheelToBodyGap - oldWheelToBodyGap).toFixed(2);
+            const phraze = `The wheel is further from the suspension and body elements by ${diff} cm`;
+            disksDifferenceCell.innerText = phraze;
+        } else {
+            const phraze = 'The gap between wheel and the suspension and body elements is the same';
+            disksDifferenceCell.innerText = phraze;
+        }
+
+    } else {
+        oldDisksWidthCell.innerText = "";
+        newDisksWidthCell.innerText = "";
+        oldWheelsETCell.innerText = "";
+        newWheelsETCell.innerText = "";
+        disksDifferenceCell.innerText = "";
+    }
+};

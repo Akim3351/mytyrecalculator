@@ -1,46 +1,109 @@
 <div class="hero">
-    <form id="tyresform" class="tyres__form">
+    <form id="tyresform" class="tyres__form without__disks">
     <div class="hero__formwrapper">
-    <h3> Select recent size</h3>
+    <h3> Select recent tyres size</h3>
+    <label class="form__checkbox">
+        <input type="checkbox" id="disksswitch" />
+        <p>Also count disks size</p>
+    </label>
         <div class="select__wrapper">
-        <select id="lefttyreswidth" class="tyres__width">
+        <label class="form__label">
+            <p class="tyres__label">Tire width, mm</p>
+            <select id="lefttyreswidth" class="tyres__width">
 
-        </select>
-        <select id="lefttyresheight" class="tyres__height">
+            </select>
+        </label>
+        <label class="form__label">
+            <p class="tyres__label">Tire profile, %</p>
+            <select id="lefttyresheight" class="tyres__height">
 
-        </select>
-        <select id="lefttyresdiameter" class="tyres__diameter">
+            </select>
+        </label>
+        <label class="form__label">
+            <p class="tyres__label">Tire diameter, inches</p>
+            <select id="lefttyresdiameter" class="tyres__diameter">
 
-        </select>
+            </select>
+            </label>
         </div>
+        <div class="select__wrapper">
+            <label class="form__label">
+                <p class="disks__label" id="disklabel">Disk diameter, inches</p>
+                <select 
+                id="leftdisksdiameter" class="disks__diameter" disabled>
+
+                </select>
+            </label>
+            <label class="form__label">
+                <p class="disks__label">Disk width, inches</p>
+                <select id="leftdiskswidth" class="disks__width" disabled>
+    
+                </select>
+            </label>
+            <label class="form__label">
+                <p class="disks__label">Disk ET, mm</p>
+                <select id="leftdiskset" class="disks__et" disabled>
+        
+                </select>
+            </label>
+            </div>
     </div>
 
     <div class="hero__formwrapper">
-        <h3> Select new size</h3>
+        <h3> Select new tyres size</h3>
+        <div class="form__sizeholder"></div>
         <div class="select__wrapper">
-        <select id="righttyreswidth" class="tyres__width">
+            <label class="form__label">
+                <p class="tyres__label">Tire width, mm</p>
+                <select id="righttyreswidth" class="tyres__width">
 
-        </select>
-        <select id="righttyresheight" class="tyres__height">
+                </select>
+            </label>
+            <label class="form__label">
+                <p class="tyres__label">Tire profile, %</p>
+                <select id="righttyresheight" class="tyres__height">
+            </select>
 
-        </select>
-        <select id="righttyresdiameter" class="tyres__diameter">
+            </label>
+            <label class="form__label">
+                <p class="tyres__label">Tire diameter, inches</p>
+            <select id="righttyresdiameter" class="tyres__diameter">
 
-        </select>
+            </select>
+            </label>
         </div>
-    </div>
+        <div class="select__wrapper">
+            <label class="form__label">
+                <p class="disks__label">Disk diameter, inches</p>
+                <select id="rightdisksdiameter" class="disks__diameter" disabled>
+                </select>
+            </label>
+            <label class="form__label">
+                <p class="disks__label">Disk width, inches</p>
+                <select id="rightdiskswidth" class="disks__width" disabled>
+    
+                </select>
+            </label>
+            <label class="form__label">
+                <p class="disks__label">Disk ET, mm</p>
+                <select id="rightdiskset" class="disks__et" disabled>
+    
+                </select>
+            </label>
+        </div>
+    </div>   
     </form>
     <table class="tyres__table">
         <thead>
             <th></th>
             <th>Recent size</th>
-            <th>Another size</th>
+            <th>New size</th>
             <th>Difference</th>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    Tire width, cm
+                    Tire width, mm
                 </td>
                 <td id="oldtyreswidth">
                 </td>
@@ -74,7 +137,30 @@
 
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Disk width, cm
+                </td>
+                <td id="olddiskswidth">
+                </td>
+                <td id="newddiskswidth">
+                </td>
+                <td id="disksdifference" rowspan="2">
 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wheel ET, mm
+                </td>
+                <td id="oldwheelset">
+                </td>
+                <td id="newdwheelset">
+                </td>
+                <td >
+
+                </td>
+            </tr>
         </tbody>
     </table>
 

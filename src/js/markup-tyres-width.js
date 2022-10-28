@@ -1,4 +1,4 @@
-import tyresWidth from '../data/tyres-width';
+import tyresWidth from '../data/data-tyres-width';
 
 const leftTyresWidth = document.getElementById("lefttyreswidth");
 const rightTyresWidth = document.getElementById("righttyreswidth");

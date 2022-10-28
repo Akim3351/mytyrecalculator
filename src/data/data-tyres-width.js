@@ -74,6 +74,22 @@ const tyresWidth = [
     {
         id: 19,
         width: 325
+    },
+    {
+        id: 20,
+        width: 335
+    },
+    {
+        id: 21,
+        width: 345
+    },
+    {
+        id: 22,
+        width: 355
+    },
+    {
+        id: 23,
+        width: 365
     }
 ];
 
