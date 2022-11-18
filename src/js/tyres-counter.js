@@ -71,11 +71,11 @@ function onFormChange(event) {
     rightTyresDiameterCell.innerText = Number((Number(rightTyresWidth) * Number(rightTyresHeight) / 1000) * 2) + (Number(rightTyresDiameter * 2.5));
 
     if (leftTyresWidth > rightTyresWidth) {
-        const tyresWidthDifference = Number((leftTyresWidth - rightTyresWidth) / 10);
-        tyresWidthDifferenceCell.innerText = `The new tire is narrower than the old one by ${tyresWidthDifference} cm`;
+        const tyresWidthDifference = Number(leftTyresWidth - rightTyresWidth);
+        tyresWidthDifferenceCell.innerText = `The new tire is narrower than the old one by ${tyresWidthDifference} mm`;
     } else if (leftTyresWidth < rightTyresWidth) {
-        const tyresWidthDifference = Number((rightTyresWidth - leftTyresWidth) / 10);
-        tyresWidthDifferenceCell.innerText = `The new tire is wider than the old one by ${tyresWidthDifference} cm`;
+        const tyresWidthDifference = Number(rightTyresWidth - leftTyresWidth);
+        tyresWidthDifferenceCell.innerText = `The new tire is wider than the old one by ${tyresWidthDifference} mm`;
     } else if (leftTyresWidth === rightTyresWidth) {
         tyresWidthDifferenceCell.innerText = 'Tire width is the same';    
     };
@@ -85,10 +85,10 @@ function onFormChange(event) {
 
     if (oldTyresProfile > newTyresProfile) {
         const tyresProfileDifference = Number(oldTyresProfile - newTyresProfile);
-        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is lower than the old one by ${tyresProfileDifference} cm`;
+        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is lower than the old one by ${tyresProfileDifference} mm`;
     } else if (newTyresProfile > oldTyresProfile) {
         const tyresProfileDifference = Number(newTyresProfile - oldTyresProfile);
-        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is higher than the old one by ${tyresProfileDifference} cm`;
+        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is higher than the old one by ${tyresProfileDifference} mm`;
     } else if (newTyresProfile === oldTyresProfile) {
         tyresHeightDifferenceCell.innerText = 'The profile height is the same';
     }
@@ -98,10 +98,10 @@ function onFormChange(event) {
 
     if (oldWheelHeight > newWheelHeight) {
         const wheelHeightDifference = Number(oldWheelHeight - newWheelHeight).toFixed(2);
-        tyresDiameterDifferenceCell.innerText = `New wheel will be lower than the old one by ${wheelHeightDifference} cm. The clearance of the car will decrease by ${Number(wheelHeightDifference / 2).toFixed(2)} cm.`;
+        tyresDiameterDifferenceCell.innerText = `New wheel will be lower than the old one by ${wheelHeightDifference} mm. The clearance of the car will decrease by ${Number(wheelHeightDifference / 2).toFixed(2)} mm.`;
     } else if (newWheelHeight > oldWheelHeight) {
         const wheelHeightDifference = Number(newWheelHeight - oldWheelHeight).toFixed(2);
-        tyresDiameterDifferenceCell.innerText = `New wheel will be higher than the old one by ${wheelHeightDifference} cm. The clearance of the car will increase by ${Number(wheelHeightDifference / 2).toFixed(2)} cm.`;
+        tyresDiameterDifferenceCell.innerText = `New wheel will be higher than the old one by ${wheelHeightDifference} mm. The clearance of the car will increase by ${Number(wheelHeightDifference / 2).toFixed(2)} mm.`;
     } else if (newWheelHeight === oldWheelHeight) {
         tyresDiameterDifferenceCell.innerText = 'Wheel height is the same. The clearance of the car will not change';
     }

@@ -29,7 +29,7 @@
 .hero__formwrapper {
     padding: 5px;
     width: 100%;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     justify-content: center;
 
     @media (min-width: 768px) {
@@ -44,11 +44,14 @@
 }
 
 .form__checkbox{
-    width: 50%;
     height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    @media(min-width: 768px) {
+        width: 50%;
+    }
 }
 
 .form__checkbox:hover{
@@ -82,7 +85,12 @@
     padding: 5px 0px;
     text-align: center;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
+
+    @media(min-width: 768px) {
+        font-size: 14px;
+        font-weight: 700;
+    }
 }
 
 .form__label{
@@ -117,9 +125,15 @@
     border-radius: 15px;
     border-bottom: 2px solid rgb(128, 128, 128);
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
+
+    @media(min-width: 768px) {
+        font-size: 16px;
+        font-weight: 700;
+        height: 35px;
+    }
 }
 
 .tyres__form select:hover:enabled, 
