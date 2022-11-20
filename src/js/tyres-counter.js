@@ -50,6 +50,9 @@ function onFormChange(event) {
     const tyresDiameterDifferenceCell = document.getElementById("tyresdiameterdifference");
 
     const disksDifferenceCell = document.getElementById("disksdifference");
+    const etDifferenceCell = document.getElementById("etdifference");
+
+    const differenceText = document.getElementById("difftext");
 
     if (event.target === disksSwicthCheckBox) {
         return;
@@ -70,14 +73,21 @@ function onFormChange(event) {
     leftTyresDiameterCell.innerText = Number((Number(leftTyresWidth) * Number(leftTyresHeight) / 1000) * 2) + (Number(leftTyresDiameter * 2.5));
     rightTyresDiameterCell.innerText = Number((Number(rightTyresWidth) * Number(rightTyresHeight) / 1000) * 2) + (Number(rightTyresDiameter * 2.5));
 
+    differenceText.innerHTML = "";
+    differenceText.insertAdjacentHTML("beforeend", `
+    <p>The comparison result is:</p>`);
+
     if (leftTyresWidth > rightTyresWidth) {
         const tyresWidthDifference = Number(leftTyresWidth - rightTyresWidth);
-        tyresWidthDifferenceCell.innerText = `The new tire is narrower than the old one by ${tyresWidthDifference} mm`;
+        tyresWidthDifferenceCell.innerText = `${tyresWidthDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>The new tire is narrower than the old one by ${tyresWidthDifference} mm. </span>`);
     } else if (leftTyresWidth < rightTyresWidth) {
         const tyresWidthDifference = Number(rightTyresWidth - leftTyresWidth);
-        tyresWidthDifferenceCell.innerText = `The new tire is wider than the old one by ${tyresWidthDifference} mm`;
+        tyresWidthDifferenceCell.innerText = `${tyresWidthDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>The new tire is wider than the old one by ${tyresWidthDifference} mm. </span>`);
     } else if (leftTyresWidth === rightTyresWidth) {
-        tyresWidthDifferenceCell.innerText = 'Tire width is the same';    
+        tyresWidthDifferenceCell.innerText = 'The same';
+        differenceText.insertAdjacentHTML("beforeend", `<span>Tire width is the same. </span>`);
     };
 
     const oldTyresProfile = Number(leftTyresWidth) * Number(leftTyresHeight) / 100;
@@ -85,12 +95,15 @@ function onFormChange(event) {
 
     if (oldTyresProfile > newTyresProfile) {
         const tyresProfileDifference = Number(oldTyresProfile - newTyresProfile);
-        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is lower than the old one by ${tyresProfileDifference} mm`;
+        tyresHeightDifferenceCell.innerText = `${tyresProfileDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>The profile height of the new tire is lower than the old one by ${tyresProfileDifference} mm. </span>`);
     } else if (newTyresProfile > oldTyresProfile) {
         const tyresProfileDifference = Number(newTyresProfile - oldTyresProfile);
-        tyresHeightDifferenceCell.innerText = `The profile height of the new tire is higher than the old one by ${tyresProfileDifference} mm`;
+        tyresHeightDifferenceCell.innerText = `${tyresProfileDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>The profile height of the new tire is higher than the old one by ${tyresProfileDifference} mm. </span>`);
     } else if (newTyresProfile === oldTyresProfile) {
-        tyresHeightDifferenceCell.innerText = 'The profile height is the same';
+        tyresHeightDifferenceCell.innerText = 'The same';
+        differenceText.insertAdjacentHTML("beforeend", `<span>The profile height is the same. </span>`);
     }
 
     const oldWheelHeight = Number((Number(leftTyresWidth) * Number(leftTyresHeight) / 1000) * 2) + (Number(leftTyresDiameter * 2.5));
@@ -98,35 +111,50 @@ function onFormChange(event) {
 
     if (oldWheelHeight > newWheelHeight) {
         const wheelHeightDifference = Number(oldWheelHeight - newWheelHeight).toFixed(2);
-        tyresDiameterDifferenceCell.innerText = `New wheel will be lower than the old one by ${wheelHeightDifference} mm. The clearance of the car will decrease by ${Number(wheelHeightDifference / 2).toFixed(2)} mm.`;
+        tyresDiameterDifferenceCell.innerText = `${wheelHeightDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>New wheel will be lower than the old one by ${wheelHeightDifference} mm. The clearance of the car will decrease by ${Number(wheelHeightDifference / 2).toFixed(2)} mm. </span>`);
     } else if (newWheelHeight > oldWheelHeight) {
         const wheelHeightDifference = Number(newWheelHeight - oldWheelHeight).toFixed(2);
-        tyresDiameterDifferenceCell.innerText = `New wheel will be higher than the old one by ${wheelHeightDifference} mm. The clearance of the car will increase by ${Number(wheelHeightDifference / 2).toFixed(2)} mm.`;
+        tyresDiameterDifferenceCell.innerText = `${wheelHeightDifference} mm`;
+        differenceText.insertAdjacentHTML("beforeend", `<span>New wheel will be higher than the old one by ${wheelHeightDifference} mm. The clearance of the car will increase by ${Number(wheelHeightDifference / 2).toFixed(2)} mm. </span>`);
     } else if (newWheelHeight === oldWheelHeight) {
-        tyresDiameterDifferenceCell.innerText = 'Wheel height is the same. The clearance of the car will not change';
+        tyresDiameterDifferenceCell.innerText = 'The same';
+        differenceText.insertAdjacentHTML("beforeend", `<span>Wheel height is the same. The clearance of the car will not change. </span>`);
     }
 
     if (disksSwicthCheckBox.checked === true) {
-        oldDisksWidthCell.innerText = Number(leftDisksWidth * 2.5);
-        newDisksWidthCell.innerText = Number(rightDisksWidth * 2.5);
+        oldDisksWidthCell.innerText = Number(leftDisksWidth * 25);
+        newDisksWidthCell.innerText = Number(rightDisksWidth * 25);
         oldWheelsETCell.innerText = leftDisksET;
         newWheelsETCell.innerText = rightDisksET;
 
-        const oldWheelToBodyGap = Number(((leftDisksWidth * 2.5) / 2) - (Number(leftDisksET) / 10));
-        
-        const newWheelToBodyGap = Number(((rightDisksWidth * 2.5) / 2) - (Number(rightDisksET) / 10));
+        if (leftDisksWidth > rightDisksWidth) {
+            disksDifferenceCell.innerText = Number(leftDisksWidth - rightDisksWidth);
+        } else if (rightDisksWidth > leftDisksWidth) {
+            disksDifferenceCell.innerText = Number(rightDisksWidth - leftDisksWidth);
+        } else if (rightDisksWidth === leftDisksWidth) {
+            disksDifferenceCell.innerText = 'The same';
+        };
+
+        if (leftDisksET > rightDisksET) {
+            etDifferenceCell.innerText = Number(leftDisksET - rightDisksET);
+        } else if (rightDisksET > leftDisksET) {
+            etDifferenceCell.innerText = Number(rightDisksET - leftDisksET);
+        } else if (rightDisksET === leftDisksET) {
+            etDifferenceCell.innerText = 'The same';
+        }
+
+        const oldWheelToBodyGap = Number((leftDisksWidth * 2.5) / 2) - (Number(leftDisksET));
+        const newWheelToBodyGap = Number((rightDisksWidth * 2.5) / 2) - (Number(rightDisksET));
 
         if (oldWheelToBodyGap > newWheelToBodyGap) {
             const diff = Number(oldWheelToBodyGap - newWheelToBodyGap).toFixed(2);
-            const phraze = `The wheel is closer to the suspension and body elements by ${diff} cm`;
-            disksDifferenceCell.innerText = phraze;
+            differenceText.insertAdjacentHTML("beforeend", `<span>The wheel is closer to the suspension and body elements by ${diff} mm. </span>`);
         } else if (oldWheelToBodyGap < newWheelToBodyGap) {
             const diff = Number(newWheelToBodyGap - oldWheelToBodyGap).toFixed(2);
-            const phraze = `The wheel is further from the suspension and body elements by ${diff} cm`;
-            disksDifferenceCell.innerText = phraze;
+            differenceText.insertAdjacentHTML("beforeend", `<span>The wheel is further from the suspension and body elements by ${diff} mm. </span>`);
         } else {
-            const phraze = 'The gap between wheel and the suspension and body elements is the same';
-            disksDifferenceCell.innerText = phraze;
+            differenceText.insertAdjacentHTML("beforeend", `<span>The gap between wheel and the suspension and body elements is the same. </span>`);
         }
 
     } else {
@@ -135,5 +163,6 @@ function onFormChange(event) {
         oldWheelsETCell.innerText = "";
         newWheelsETCell.innerText = "";
         disksDifferenceCell.innerText = "";
+        etDifferenceCell.innerText = "";
     }
 };

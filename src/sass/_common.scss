@@ -1,7 +1,12 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 body {
-    background-image: url(../images/tyres.jpg);
-    background-size:  100% auto;
-    background-position: center;
+
+    background-color: rgb(95, 95, 95);
+
+    @media (min-width: 768px) {
+        background-image: url(../images/tyres.jpg);
+        background-size:  100% auto;
+        background-position: center;
+        }
 }

@@ -6,7 +6,6 @@
 }
 
 .hero{
-    padding: 15px;
     background-color: rgba(128, 128, 128, 0.5);
     width: 100%;
     display: flex;
@@ -15,7 +14,7 @@
 
 .tyres__form {
     width: 100%;
-    padding: 15px 0px;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     
@@ -154,21 +153,25 @@
 .tyres__table th,
 .tyres__table td{
     padding: 3px;
-    height: 50px;
+    height: 25px;
     width: 25%;
     font-size: 12px;
     text-align: center;
+
+    @media(min-width: 768px) {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
 }
 
 .tyres__table th{
     background-color: rgba(128, 128, 128, 0.5);
-    font-weight: 600;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .tyres__table td{
     background-color: rgb(128, 128, 128, 0.3);
-    font-weight: 400;
     color: rgb(255, 255, 255);
 }
 
@@ -176,4 +179,23 @@
 .tyres__table td:hover {
     background-color: rgb(255, 255, 255);
     color:rgb(0, 0, 0);
+}
+
+.diff__text{
+    margin: 0px;
+    padding: 5px;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(128, 128, 128, 0.5);
+    text-align: justify;
+
+    @media(min-width: 768px) {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+.diff__text p{
+    margin: 0px;
+    font-weight: 600;
 }
